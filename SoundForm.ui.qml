@@ -8,13 +8,13 @@ Page {
 
     property var playbar_model: 0
 
-    title: qsTr("Sleep baby Sleep")
+    title: qsTr("Sleep Baby Sleep")
     padding: 5
 
     GridView {
         id: gridView
         anchors.fill: parent
-        cellHeight: 60
+        cellHeight: 70
         cellWidth: 60
 
         delegate: SoundItem {

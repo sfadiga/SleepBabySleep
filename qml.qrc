@@ -4,8 +4,7 @@
         <file>qtquickcontrols2.conf</file>
         <file>SoundItem.qml</file>
         <file>SoundForm.ui.qml</file>
-        <file>Playbar.qml</file>
-        <file>PlaybarForm.ui.qml</file>
+        <file>PlaybarForm.qml</file>
         <file>HelpForm.ui.qml</file>
         <file>SettingsForm.ui.qml</file>
         <file>SoundModel.qml</file>
