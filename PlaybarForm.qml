@@ -75,7 +75,7 @@ ToolBar {
 
         Slider {
             id: slider
-            value: 0.7
+            value: 0.4
             Layout.alignment: Qt.AlignLeft
             Layout.fillWidth: true
             onValueChanged: volume()
