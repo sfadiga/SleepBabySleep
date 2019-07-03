@@ -11,52 +11,43 @@ Item {
     property string color_text: ""
     property string label: ""
     property string icon_src: ""
-    property variant playbar_ref: 0
-
-    x: 5
-    height: 50
-    width: 50
+    property variant playbar_model_ref: 0
+    property variant popup_ref: 0
+    property variant volume_ref: 0
 
     Audio {
         id: audio
         source: root.sound_src
-        //loops: Audio.Infinite
+        volume: root.volume_ref
     }
 
     Column {
 
-        spacing: 5
         RoundButton {
             id: rbutton
             anchors.horizontalCenter: parent.horizontalCenter
-            width: 45
-            height: 45
-            //text: name
-            //radius:5
+
             icon {
-                //name : string
-                width : parent.width
-                height : parent.height
                 source: root.icon_src
                 color: root.color_text
             }
 
             TapHandler {
                 onTapped: {
-                    //console.info("play")
                     audio.play()
+
                 }
                 onLongPressed: {
-                    //console.info("add sound item")
-                    //console.info(model)
-                    playbar_ref.append(model)
+                    playbar_model_ref.append(model)
+                    popup_ref.open()
                 }
             }
+
+            checked: GridView.isCurrentItem
 
         }
 
         Text {
-            x: 5
             text: root.label
             font.bold: true
             anchors.horizontalCenter: parent.horizontalCenter
@@ -70,3 +61,8 @@ Item {
 
 
 
+
+/*##^## Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+ ##^##*/

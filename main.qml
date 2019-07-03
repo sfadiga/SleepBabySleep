@@ -67,23 +67,27 @@ ApplicationWindow {
 
     StackView {
         id: stackView
-        //initialItem: "SoundForm.ui.qml"
+
         anchors.fill: parent
+        SoundForm {
+            id: soundForm
+            playbar_model: playBar.playQueueModel
+            popup_from_ref: playBar.pop
+            current_volume_ref: playBar.currentVolume
+        }
     }
+
 
     footer: PlaybarForm {
         id: playBar
         width: parent.width
         property var playQueueModel: PlaybarModel {}
+
     }
 
     Component.onCompleted: {
         stackView.push(soundForm)
     }
 
-    SoundForm {
-        id: soundForm
-        playbar_model: playBar.playQueueModel
-    }
 
 }

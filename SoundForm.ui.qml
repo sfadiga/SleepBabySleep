@@ -7,15 +7,26 @@ Page {
     id: root
 
     property var playbar_model: 0
+    property var popup_from_ref: 0
+    property var current_volume_ref: 0
+
+    padding: 5
 
     title: qsTr("Sleep Baby Sleep")
-    padding: 5
 
     GridView {
         id: gridView
         anchors.fill: parent
-        cellHeight: 70
+
+        cellHeight: 60
         cellWidth: 60
+
+        focus: true
+
+        highlight: Rectangle {
+            color: "lightsteelblue"
+            //radius: 5
+        }
 
         delegate: SoundItem {
             id: soundItem
@@ -23,7 +34,9 @@ Page {
             color_text: colorCode
             label: name
             icon_src: image
-            playbar_ref: playbar_model
+            playbar_model_ref: playbar_model
+            popup_ref: popup_from_ref
+            volume_ref: current_volume_ref
         }
 
         model: SoundModel {

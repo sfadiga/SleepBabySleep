@@ -1,5 +1,48 @@
 import QtQuick 2.12
-
+/*
+ListModel {
+   ListElement {
+      category: "Nature"
+      color: "blue"
+      contents: [
+         ListElement {
+            index: 0
+            name: "Grey"
+            colorCode: "grey"
+            sound: "qrc:/sounds/enter.wav"
+            image: "qrc:/icons/ic_airplanemode_active_24px.svg"
+         },
+         ListElement {
+            index: 0
+            name: "Grey"
+            colorCode: "grey"
+            sound: "qrc:/sounds/enter.wav"
+            image: "qrc:/icons/ic_airplanemode_active_24px.svg"
+         }
+      ]
+   }
+   ListElement {
+      category: "Kitchen"
+      color: "green"
+      contents: [
+         ListElement {
+            index: 0
+            name: "Grey"
+            colorCode: "grey"
+            sound: "qrc:/sounds/enter.wav"
+            image: "qrc:/icons/ic_airplanemode_active_24px.svg"
+         },
+         ListElement {
+            index: 0
+            name: "Grey"
+            colorCode: "grey"
+            sound: "qrc:/sounds/enter.wav"
+            image: "qrc:/icons/ic_airplanemode_active_24px.svg"
+         }
+      ]
+   }
+}
+  */
 ListModel {
     id: soundListModel
 
