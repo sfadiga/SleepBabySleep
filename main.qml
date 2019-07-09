@@ -1,22 +1,25 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
+import Theme 1.0
 
 ApplicationWindow {
     id: window
     visible: true
+
     width: 640
     height: 480
-    title: qsTr("DormeBBDorme")
+
+    title: qsTr("SleepBabySleep")
 
     header: ToolBar {
         contentHeight: toolButton.implicitHeight
+        background: Rectangle {
+            color: Theme.topBarColor
+        }
 
         ToolButton {
             id: toolButton
-            //text: stackView.depth > 1 ? "\u25C0" : "\u2630"
-            //font.pixelSize: Qt.application.font.pixelSize * 1.6
-
             icon {
                 source: stackView.depth > 1 ?
                             "qrc:/icons/ic_arrow_back_24px.svg" :
@@ -43,9 +46,12 @@ ApplicationWindow {
         width: window.width * 0.66
         height: window.height
 
+        background: Rectangle {
+             color: Theme.menuBackgroundColor
+        }
+
         Column {
             anchors.fill: parent
-
             ItemDelegate {
                 text: qsTr("Settings")
                 width: parent.width
@@ -67,7 +73,6 @@ ApplicationWindow {
 
     StackView {
         id: stackView
-
         anchors.fill: parent
         SoundForm {
             id: soundForm
@@ -82,12 +87,12 @@ ApplicationWindow {
         id: playBar
         width: parent.width
         property var playQueueModel: PlaybarModel {}
-
     }
 
     Component.onCompleted: {
         stackView.push(soundForm)
     }
+
 
 
 }

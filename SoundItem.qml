@@ -2,7 +2,8 @@ import QtQuick 2.12
 import QtMultimedia 5.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls.Material 2.12
-
+import QtQuick.Layouts 1.12
+import Theme 1.0
 
 Item {
     id: root
@@ -21,41 +22,92 @@ Item {
         volume: root.volume_ref
     }
 
-    Column {
+    ColumnLayout {
+        id: column
 
-        RoundButton {
+        width: 70
+
+        Button {
             id: rbutton
-            anchors.horizontalCenter: parent.horizontalCenter
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: 50
+            Layout.preferredHeight: 50
+
+            background: Rectangle {
+                id: rec
+                radius: 50 // make it round
+                color: Theme.buttonBackgroundColor
+            }
+
 
             icon {
+                width: 30//parent.width
+                height: 30///parent.height
                 source: root.icon_src
                 color: root.color_text
             }
 
-            TapHandler {
-                onTapped: {
-                    audio.play()
-
-                }
-                onLongPressed: {
-                    playbar_model_ref.append(model)
-                    popup_ref.open()
-                }
+            onPressed: audio.play()
+            onPressAndHold: {
+                playbar_model_ref.append(model)
+                popup_ref.open()
             }
-
-            checked: GridView.isCurrentItem
-
         }
+        Label{
+            id: txtLabel
+            Layout.alignment: Qt.AlignHCenter
+            horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.WordWrap
 
-        Text {
+            Layout.preferredWidth: column.width
+
             text: root.label
-            font.bold: true
-            anchors.horizontalCenter: parent.horizontalCenter
+
+            font.pointSize: 11
+            color: root.color_text
         }
+        /* Text {
+            id: txtLabel
+            Layout.alignment: Qt.AlignHCenter
+
+            wrapMode: Text.WordWrap
+
+            Layout.preferredWidth: column.width
+           //Layout.preferredHeight: column.height
+            //elide: Text.ElideMiddle
+
+            text: root.label
+
+            font.pointSize: 10
+            color: root.color_text
+        }
+        */
 
     } //Column
 
 } // Item
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -3,7 +3,7 @@
         <file>main.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>SoundItem.qml</file>
-        <file>SoundForm.ui.qml</file>
+        <file>SoundForm.qml</file>
         <file>PlaybarForm.qml</file>
         <file>HelpForm.ui.qml</file>
         <file>SettingsForm.ui.qml</file>
@@ -88,5 +88,11 @@
         <file>Sound.qml</file>
         <file>PlaybarModel.qml</file>
         <file>PlayItem.qml</file>
+        <file>Theme.qml</file>
+        <file>icons/ic_all_inclusive_5_24px.svg</file>
+        <file>icons/ic_all_inclusive_15_24px.svg</file>
+        <file>icons/ic_all_inclusive_30_24px.svg</file>
+        <file>icons/ic_all_inclusive_45_24px.svg</file>
+        <file>icons/ic_all_inclusive_60_24px.svg</file>
     </qresource>
 </RCC>
