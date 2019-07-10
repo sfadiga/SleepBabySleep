@@ -87,12 +87,8 @@
         <file>icons/ic_menu_24px.svg</file>
         <file>Sound.qml</file>
         <file>PlaybarModel.qml</file>
-        <file>PlayItem.qml</file>
         <file>Theme.qml</file>
-        <file>icons/ic_all_inclusive_5_24px.svg</file>
-        <file>icons/ic_all_inclusive_15_24px.svg</file>
-        <file>icons/ic_all_inclusive_30_24px.svg</file>
-        <file>icons/ic_all_inclusive_45_24px.svg</file>
-        <file>icons/ic_all_inclusive_60_24px.svg</file>
+        <file>icons/ic_fire_24px.svg</file>
+        <file>icons/ic_heart_24px.svg</file>
     </qresource>
 </RCC>

@@ -82,13 +82,13 @@ ListModel {
                 name: qsTr("Heart beat")
                 colorCode: "darkcyan"
                 sound: "qrc:/sounds/selected.wav"
-                image: "qrc:/icons/ic_filter_vintage_24px.svg"
+                image: "qrc:/icons/ic_heart_24px.svg"
             },
             ListElement {
                 name: qsTr("Fire")
                 colorCode: "darkcyan"
                 sound: "qrc:/sounds/selected.wav"
-                image: "qrc:/icons/ic_spa_24px.svg"
+                image: "qrc:/icons/ic_fire_24px.svg"
             },
             ListElement {
                 name: qsTr("Forest")
