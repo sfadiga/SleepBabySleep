@@ -12,6 +12,8 @@ ToolBar {
     property alias pop: pop
     property alias currentVolume: slider.value
 
+    readonly property int time_base: 60000
+
     position: ToolBar.Footer
     padding: 5
     height: 60
@@ -31,7 +33,7 @@ ToolBar {
         isplaying = true
         buttonPlay.state = "playing"
         if(buttonLoop.state != "0") {
-            loopTimer.interval = loopLabel.text * 1000//buttonLoop.state * 1
+            loopTimer.interval = loopLabel.text * time_base
 
             loopTimer.start()
             displayTimer.start()
@@ -48,6 +50,7 @@ ToolBar {
         if(buttonLoop.state != "0") {
             loopTimer.stop()
             displayTimer.stop()
+            loopLabel.text = buttonLoop.state
         }
 
     }
@@ -62,23 +65,6 @@ ToolBar {
                 playStart()
             }
         }
-
-/*        if (playQueueModel.count > 0) {
-            for(var i = 0 ; i < playQueueView.count ; i++) {
-                var item = playQueueView.itemAtIndex(i)
-                if (isplaying) {
-                    item.audio.stop()
-                }
-                else {
-                    item.audio.loops = Audio.Infinite
-                    item.audio.volume = slider.value
-                    item.audio.play()
-                }
-            }
-            isplaying = !isplaying
-            buttonPlay.state = isplaying ? "playing" : "stoped"
-        }
-*/
     }
 
     function loopControl() {
@@ -97,29 +83,12 @@ ToolBar {
              buttonLoop.state = "0"
 
          if (buttonLoop.state != "0")
-            loopTimer.interval = buttonLoop.state * 1
+            loopTimer.interval = loopLabel.text * time_base
          else
          {
             loopTimer.stop()
             displayTimer.stop()
          }
-
-      /*  if (playQueueModel.count > 0) {
-            for(var i = 0 ; i < playQueueView.count ; i++) {
-                var item = playQueueView.itemAtIndex(i)
-                if (isplaying) {
-                    item.audio.stop()
-                }
-                else {
-                    item.audio.loops = Audio.Infinite
-                    item.audio.volume = slider.value
-                    item.audio.play()
-                }
-            }
-            isplaying = !isplaying
-            buttonPlay.state = isplaying ?  "paused" : "playing"
-        }
-        */
     }
 
     function volumeControl() {
@@ -153,7 +122,7 @@ ToolBar {
     }
     Timer { // updates the icon label minute by minute
         id: displayTimer
-        interval: 60
+        interval: time_base
         repeat: true
         onTriggered: loopLabel.text = loopLabel.text - 1 //JS is the crazy language, this works as intended!
     }
@@ -188,8 +157,8 @@ ToolBar {
         RoundButton {
             id: buttonLoop
             Layout.alignment: Qt.AlignLeft
-            Layout.minimumHeight: 35
-            Layout.minimumWidth: 35
+            Layout.minimumHeight: 36
+            Layout.minimumWidth: 36
             icon {
                 source: "qrc:/icons/ic_all_inclusive_24px.svg"
                 color: Theme.playbarIconColor

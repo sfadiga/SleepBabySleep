@@ -6,7 +6,7 @@
         <file>SoundForm.qml</file>
         <file>PlaybarForm.qml</file>
         <file>HelpForm.ui.qml</file>
-        <file>SettingsForm.ui.qml</file>
+        <file>SettingsForm.qml</file>
         <file>SoundModel.qml</file>
         <file>icons/ic_airplanemode_active_24px.svg</file>
         <file>icons/ic_airport_shuttle_24px.svg</file>
@@ -85,10 +85,10 @@
         <file>sounds/welcome.wav</file>
         <file>icons/ic_arrow_back_24px.svg</file>
         <file>icons/ic_menu_24px.svg</file>
-        <file>Sound.qml</file>
         <file>PlaybarModel.qml</file>
         <file>Theme.qml</file>
         <file>icons/ic_fire_24px.svg</file>
         <file>icons/ic_heart_24px.svg</file>
+        <file>AboutForm.ui.qml</file>
     </qresource>
 </RCC>

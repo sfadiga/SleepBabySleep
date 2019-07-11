@@ -8,8 +8,6 @@ Page {
     property var popup_from_ref: 0
     property var current_volume_ref: 0
 
-    anchors.fill: parent
-
     title:  qsTr("Sleep Baby Sleep")
 
     SwipeView {

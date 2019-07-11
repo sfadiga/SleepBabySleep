@@ -4,72 +4,72 @@ ListModel {
     id: soundListModel
     ListElement {
         categoryTitle: qsTr("Appliances")
-        categoryColor: "lightpink"
+        categoryColor: "indigo"
         contents: [
             ListElement {
                 name: qsTr("Clock")
-                colorCode: "lightcoral"
+                colorCode: "darkmagenta"
                 sound: "qrc:/sounds/computers.wav"
                 image: "qrc:/icons/ic_alarm_24px.svg"
             },
             ListElement {
                 name: qsTr("Computer")
-                colorCode: "lightcoral"
-                sound: "qrc:/sounds/computers.wav"
+                colorCode: "darkmagenta"
+                sound: "qrc:/sounds/selected.wav"
                 image: "qrc:/icons/ic_speaker_24px.svg"
             },
             ListElement {
                 name: qsTr("Fan")
-                colorCode: "lightcoral"
-                sound: "qrc:/sounds/computers.wav"
+                colorCode: "darkmagenta"
+                sound: "qrc:/sounds/welcome.wav"
                 image: "qrc:/icons/ic_toys_24px.svg"
             },
             ListElement {
                 name: qsTr("Hair dryer")
-                colorCode: "lightcoral"
-                sound: "qrc:/sounds/computers.wav"
+                colorCode: "darkmagenta"
+                sound: "qrc:/sounds/enter.wav"
                 image: "qrc:/icons/ic_toys_24px.svg"
             },
             ListElement {
                 name: qsTr("Microwave")
-                colorCode: "lightcoral"
+                colorCode: "darkmagenta"
                 sound: "qrc:/sounds/computers.wav"
                 image: "qrc:/icons/ic_scanner_24px.svg"
             },
             ListElement {
                 name: qsTr("Quiet Tv")
-                colorCode: "lightcoral"
-                sound: "qrc:/sounds/computers.wav"
+                colorCode: "darkmagenta"
+                sound: "qrc:/sounds/selected.wav"
                 image: "qrc:/icons/ic_tv_24px.svg"
             },
             ListElement {
                 name: qsTr("Refrigerator")
-                colorCode: "lightcoral"
+                colorCode: "darkmagenta"
                 sound: "qrc:/sounds/computers.wav"
                 image: "qrc:/icons/ic_kitchen_24px.svg"
             },
             ListElement {
                 name: qsTr("Radio")
-                colorCode: "lightcoral"
-                sound: "qrc:/sounds/computers.wav"
+                colorCode: "darkmagenta"
+                sound: "qrc:/sounds/welcome.wav"
                 image: "qrc:/icons/ic_radio_24px.svg"
             },
             ListElement {
                 name: qsTr("Vacuum cleaner")
-                colorCode: "lightcoral"
-                sound: "qrc:/sounds/computers.wav"
+                colorCode: "darkmagenta"
+                sound: "qrc:/sounds/selected.wav"
                 image: "qrc:/icons/ic_tv_24px.svg"
             },
             ListElement {
                 name: qsTr("Washing machine")
-                colorCode: "lightcoral"
+                colorCode: "darkmagenta"
                 sound: "qrc:/sounds/computers.wav"
                 image: "qrc:/icons/ic_local_laundry_service_24px.svg"
             },
             ListElement {
                 name: qsTr("White noise")
-                colorCode: "lightcoral"
-                sound: "qrc:/sounds/computers.wav"
+                colorCode: "darkmagenta"
+                sound: "qrc:/sounds/enter.wav"
                 image: "qrc:/icons/ic_tv_24px.svg"
             }
         ]
@@ -87,13 +87,13 @@ ListModel {
             ListElement {
                 name: qsTr("Fire")
                 colorCode: "darkcyan"
-                sound: "qrc:/sounds/selected.wav"
+                sound: "qrc:/sounds/enter.wav"
                 image: "qrc:/icons/ic_fire_24px.svg"
             },
             ListElement {
                 name: qsTr("Forest")
                 colorCode: "darkcyan"
-                sound: "qrc:/sounds/enter.wav"
+                sound: "qrc:/sounds/welcome.wav"
                 image: "qrc:/icons/ic_local_florist_24px.svg"
             },
             ListElement {
@@ -105,72 +105,72 @@ ListModel {
             ListElement {
                 name: qsTr("Stream")
                 colorCode: "darkcyan"
-                sound: "qrc:/sounds/selected.wav"
+                sound: "qrc:/sounds/computer.wav"
                 image: "qrc:/icons/ic_pool_24px.svg"
             }
         ]
     }
     ListElement {
         categoryTitle: qsTr("Places")
-        categoryColor: "burlywood"
+        categoryColor: "darkred"
         contents: [
             ListElement {
                 name: qsTr("Bar")
-                colorCode: "burlywood"
-                sound: "qrc:/sounds/selected.wav"
+                colorCode: "firebrick"
+                sound: "qrc:/sounds/welcome.wav"
                 image: "qrc:/icons/ic_local_bar_24px.svg"
             },
             ListElement {
                 name: qsTr("Beach")
-                colorCode: "burlywood"
+                colorCode: "firebrick"
                 sound: "qrc:/sounds/selected.wav"
                 image: "qrc:/icons/ic_beach_access_24px.svg"
             },
             ListElement {
                 name: qsTr("Bedroom")
-                colorCode: "burlywood"
-                sound: "qrc:/sounds/selected.wav"
+                colorCode: "firebrick"
+                sound: "qrc:/sounds/enter.wav"
                 image: "qrc:/icons/ic_local_hotel_24px.svg"
             },
             ListElement {
                 name: qsTr("Busy street")
-                colorCode: "burlywood"
-                sound: "qrc:/sounds/selected.wav"
+                colorCode: "firebrick"
+                sound: "qrc:/sounds/computer.wav"
                 image: "qrc:/icons/ic_traffic_24px.svg"
             },
             ListElement {
-                name: qsTr("Child room")
-                colorCode: "burlywood"
-                sound: "qrc:/sounds/selected.wav"
+                name: qsTr("Children")
+                colorCode: "firebrick"
+                sound: "qrc:/sounds/welcome.wav"
                 image: "qrc:/icons/ic_child_care_24px.svg"
             },
             ListElement {
                 name: qsTr("Cafe")
-                colorCode: "burlywood"
-                sound: "qrc:/sounds/selected.wav"
+                colorCode: "firebrick"
+                sound: "qrc:/sounds/enter.wav"
                 image: "qrc:/icons/ic_local_cafe_24px.svg"
             },
             ListElement {
                 name: qsTr("Market")
-                colorCode: "burlywood"
+                colorCode: "firebrick"
                 sound: "qrc:/sounds/selected.wav"
                 image: "qrc:/icons/ic_shopping_cart_24px.svg"
             },
             ListElement {
                 name: qsTr("Office")
-                colorCode: "burlywood"
-                sound: "qrc:/sounds/selected.wav"
+                colorCode: "firebrick"
+                sound: "qrc:/sounds/computer.wav"
                 image: "qrc:/icons/ic_work_24px.svg"
             },
             ListElement {
                 name: qsTr("Party")
-                colorCode: "burlywood"
+                colorCode: "firebrick"
                 sound: "qrc:/sounds/enter.wav"
                 image: "qrc:/icons/ic_cake_24px.svg"
             },
             ListElement {
                 name: qsTr("Theater")
-                colorCode: "burlywood"
+                colorCode: "firebrick"
                 sound: "qrc:/sounds/selected.wav"
                 image: "qrc:/icons/ic_theaters_24px.svg"
             }
@@ -178,12 +178,12 @@ ListModel {
     }
     ListElement {
         categoryTitle: qsTr("Transport")
-        categoryColor: "lightgray"
+        categoryColor: "darkslategrey"
         contents: [
             ListElement {
                 name: qsTr("Airplane")
                 colorCode: "gray"
-                sound: "qrc:/sounds/selected.wav"
+                sound: "qrc:/sounds/welcome.wav"
                 image: "qrc:/icons/ic_airplanemode_active_24px.svg"
             },
             ListElement {
@@ -195,7 +195,7 @@ ListModel {
             ListElement {
                 name: qsTr("Car")
                 colorCode: "gray"
-                sound: "qrc:/sounds/selected.wav"
+                sound: "qrc:/sounds/computer.wav"
                 image: "qrc:/icons/ic_directions_car_24px.svg"
             },
             ListElement {
@@ -213,7 +213,7 @@ ListModel {
             ListElement {
                 name: qsTr("Truck")
                 colorCode: "gray"
-                sound: "qrc:/sounds/selected.wav"
+                sound: "qrc:/sounds/enter.wav"
                 image: "qrc:/icons/ic_local_shipping_24px.svg"
             }
         ]

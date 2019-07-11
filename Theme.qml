@@ -3,20 +3,19 @@ pragma Singleton
 
 import QtQuick 2.12
 
+
 QtObject {
     id: theme
 
-    property string themeSelect: "girl"
+    property string themeSelect: "boy"
+    property alias selectedTheme: theme.themeSelect
 
     readonly property color categoryTitleColor: "bisque"
-
     readonly property color playbarIconColor: "black"
-
-    readonly property color plalistPaneColor: "gray"
 
     readonly property color backgroundColor:
     if (theme.themeSelect === "boy"){
-        "beige"
+        "aliceblue"
     } else if (theme.themeSelect === "girl"){
         "antiquewhite"
     } else {
@@ -25,7 +24,7 @@ QtObject {
 
     readonly property color topBarColor:
     if (theme.themeSelect === "boy"){
-        "darkkhaki"
+        "royalblue"
     } else if (theme.themeSelect === "girl"){
         "lightsalmon"
     } else {
@@ -34,30 +33,38 @@ QtObject {
 
     readonly property color playBarColor:
     if (theme.themeSelect === "boy"){
-        "darkkhaki"
+        topBarColor
     } else if (theme.themeSelect === "girl"){
-        "lightsalmon"
+        topBarColor
     } else {
-        "gold"
+        topBarColor
     }
 
     readonly property color menuBackgroundColor:
     if (theme.themeSelect === "boy"){
-        "khaki"
+        Qt.lighter(topBarColor)
     } else if (theme.themeSelect === "girl"){
-        "lightpink"
+        Qt.lighter(topBarColor)
     } else {
-        "lightgold"
+        Qt.lighter(topBarColor)
     }
 
     readonly property color buttonBackgroundColor:
     if (theme.themeSelect === "boy"){
-        "antiquewhite"
+        "paleturquoise"
     } else if (theme.themeSelect === "girl"){
         "bisque"
     } else {
         "gold"
     }
 
+    readonly property color plalistPaneColor:
+    if (theme.themeSelect === "boy"){
+        Qt.lighter(playBarColor)
+    } else if (theme.themeSelect === "girl"){
+        Qt.lighter(playBarColor)
+    } else {
+        Qt.lighter(playBarColor)
+    }
 
 }

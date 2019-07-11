@@ -2,6 +2,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import Theme 1.0
+import Qt.labs.settings 1.1
 
 ApplicationWindow {
     id: window
@@ -11,6 +12,7 @@ ApplicationWindow {
     height: 480
 
     title: qsTr("SleepBabySleep")
+
 
     header: ToolBar {
         contentHeight: toolButton.implicitHeight
@@ -47,7 +49,7 @@ ApplicationWindow {
         height: window.height
 
         background: Rectangle {
-             color: Theme.menuBackgroundColor
+            color: Theme.menuBackgroundColor
         }
 
         Column {
@@ -56,7 +58,7 @@ ApplicationWindow {
                 text: qsTr("Settings")
                 width: parent.width
                 onClicked: {
-                    stackView.push("SettingsForm.ui.qml")
+                    stackView.push("SettingsForm.qml")
                     drawer.close()
                 }
             }
@@ -65,6 +67,14 @@ ApplicationWindow {
                 width: parent.width
                 onClicked: {
                     stackView.push("HelpForm.ui.qml")
+                    drawer.close()
+                }
+            }
+            ItemDelegate {
+                text: qsTr("About")
+                width: parent.width
+                onClicked: {
+                    stackView.push("AboutForm.ui.qml")
                     drawer.close()
                 }
             }
@@ -89,8 +99,19 @@ ApplicationWindow {
         property var playQueueModel: PlaybarModel {}
     }
 
+
+    Settings {
+        id: settings
+        property string themeSaved: Theme.selectedTheme
+    }
+
+    Component.onDestruction: {
+        settings.themeSaved = Theme.selectedTheme
+    }
+
     Component.onCompleted: {
         stackView.push(soundForm)
+        Theme.selectedTheme = settings.themeSaved
     }
 
 
