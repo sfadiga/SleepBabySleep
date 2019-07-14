@@ -6,10 +6,11 @@ import Theme 1.0
 
 Page {
     id: settings
-
     title: qsTr("Settings")
-
     padding: 10
+    background: Rectangle {
+        color: Theme.backgroundColor
+    }
 
     ButtonGroup {
         id: group

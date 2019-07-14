@@ -11,9 +11,6 @@ ApplicationWindow {
     width: 640
     height: 480
 
-    title: qsTr("SleepBabySleep")
-
-
     header: ToolBar {
         contentHeight: toolButton.implicitHeight
         background: Rectangle {
@@ -38,8 +35,17 @@ ApplicationWindow {
         }
 
         Label {
-            text: stackView.currentItem.title
             anchors.centerIn: parent
+            antialiasing: true
+            text: stackView.currentItem.title
+            font.bold: true
+            font.capitalization: Font.AllUppercase
+            font.pointSize: 20
+            font.wordSpacing: 5
+            font.letterSpacing: 2
+            color: Qt.lighter(Theme.topBarColor)
+            style: Text.Outline
+            styleColor: Qt.darker(Theme.topBarColor)
         }
     }
 
@@ -113,7 +119,6 @@ ApplicationWindow {
         stackView.push(soundForm)
         Theme.selectedTheme = settings.themeSaved
     }
-
 
 
 }
