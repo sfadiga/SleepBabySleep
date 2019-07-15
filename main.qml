@@ -3,13 +3,82 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import Theme 1.0
 import Qt.labs.settings 1.1
+import QtQuick.Window 2.12
 
-ApplicationWindow {
-    id: window
+// TODO experimental stuff ==== V
+
+Loader {
+    id:loader
+
+    Component {
+        id: splash
+        Window {
+            id: splashWindow
+            signal timeout()
+            //anchors.fill: parent
+            width: 800// parent.width
+            height: 600// parent.height
+
+            modality: Qt.ApplicationModal
+            flags: Qt.SplashScreen
+            color: "green"
+            ProgressBar {
+                id: progress
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    bottom: parent.bottom
+                }
+                value: 0
+                from: 0
+                to: 100
+            }
+            Timer {
+                id: timer
+                interval: 10
+                running: true
+                repeat: true
+                onTriggered: {
+                    progress.value++
+                    if(progress.value >= 100){
+                        timer.stop()
+                        splashWindow.timeout()
+                    }
+                }
+            }
+        }
+    }
+
+    sourceComponent: splash
+    active: true
     visible: true
+    onStatusChanged:  {
+        if (loader.status == Loader.Ready)
+            item.show()
+    }
+
+    Connections {
+        id: connection
+        target: loader.item
+        onTimeout: {
+            connection.target = null
+            loader.sourceComponent = rootWindow
+        }
+    }
+
+
+    Component {
+        id:rootWindow
+    // ^===== TODO experimental stuff
+
+
+    ApplicationWindow {
+    id: window
+    visible: false
 
     width: 640
     height: 480
+
 
     header: ToolBar {
         contentHeight: toolButton.implicitHeight
@@ -118,7 +187,10 @@ ApplicationWindow {
     Component.onCompleted: {
         stackView.push(soundForm)
         Theme.selectedTheme = settings.themeSaved
+        window.visible = true
     }
 
 
+}
+}
 }

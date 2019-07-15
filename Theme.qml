@@ -58,7 +58,7 @@ QtObject {
         "gold"
     }
 
-    readonly property color plalistPaneColor:
+    readonly property color playlistPaneColor:
     if (theme.themeSelect === "boy"){
         Qt.lighter(playBarColor)
     } else if (theme.themeSelect === "girl"){

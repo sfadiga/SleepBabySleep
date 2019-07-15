@@ -56,8 +56,8 @@ Page {
                             topMargin: 5
                             height: parent.height
                             width: parent.width
-                            cellHeight: 80
-                            cellWidth: 80
+                            cellHeight: 110
+                            cellWidth: 90
 
                             model: contents
 

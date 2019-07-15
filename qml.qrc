@@ -8,87 +8,8 @@
         <file>HelpForm.ui.qml</file>
         <file>SettingsForm.qml</file>
         <file>SoundModel.qml</file>
-        <file>icons/ic_airplanemode_active_24px.svg</file>
-        <file>icons/ic_airport_shuttle_24px.svg</file>
-        <file>icons/ic_alarm_24px.svg</file>
-        <file>icons/ic_all_inclusive_24px.svg</file>
-        <file>icons/ic_attach_file_24px.svg</file>
-        <file>icons/ic_beach_access_24px.svg</file>
-        <file>icons/ic_cake_24px.svg</file>
-        <file>icons/ic_call_24px.svg</file>
-        <file>icons/ic_check_box_24px.svg</file>
-        <file>icons/ic_check_box_outline_blank_24px.svg</file>
-        <file>icons/ic_child_care_24px.svg</file>
-        <file>icons/ic_child_friendly_24px.svg</file>
-        <file>icons/ic_directions_boat_24px.svg</file>
-        <file>icons/ic_directions_bus_24px.svg</file>
-        <file>icons/ic_directions_car_24px.svg</file>
-        <file>icons/ic_directions_railway_24px.svg</file>
-        <file>icons/ic_directions_subway_24px.svg</file>
-        <file>icons/ic_domain_24px.svg</file>
-        <file>icons/ic_error_outline_24px.svg</file>
-        <file>icons/ic_filter_drama_24px.svg</file>
-        <file>icons/ic_filter_hdr_24px.svg</file>
-        <file>icons/ic_filter_vintage_24px.svg</file>
-        <file>icons/ic_flash_on_24px.svg</file>
-        <file>icons/ic_group_24px.svg</file>
-        <file>icons/ic_indeterminate_check_box_24px.svg</file>
-        <file>icons/ic_kitchen_24px.svg</file>
-        <file>icons/ic_local_bar_24px.svg</file>
-        <file>icons/ic_local_cafe_24px.svg</file>
-        <file>icons/ic_local_car_wash_24px.svg</file>
-        <file>icons/ic_local_florist_24px.svg</file>
-        <file>icons/ic_local_hotel_24px.svg</file>
-        <file>icons/ic_local_laundry_service_24px.svg</file>
-        <file>icons/ic_local_library_24px.svg</file>
-        <file>icons/ic_local_printshop_24px.svg</file>
-        <file>icons/ic_local_shipping_24px.svg</file>
-        <file>icons/ic_location_city_24px.svg</file>
-        <file>icons/ic_message_24px.svg</file>
-        <file>icons/ic_motorcycle_24px.svg</file>
-        <file>icons/ic_pause_circle_outline_24px.svg</file>
-        <file>icons/ic_phonelink_ring_24px.svg</file>
-        <file>icons/ic_play_circle_outline_24px.svg</file>
-        <file>icons/ic_playlist_add_24px.svg</file>
-        <file>icons/ic_playlist_add_check_24px.svg</file>
-        <file>icons/ic_pool_24px.svg</file>
-        <file>icons/ic_radio_24px.svg</file>
-        <file>icons/ic_radio_button_checked_24px.svg</file>
-        <file>icons/ic_radio_button_unchecked_24px.svg</file>
-        <file>icons/ic_router_24px.svg</file>
-        <file>icons/ic_scanner_24px.svg</file>
-        <file>icons/ic_school_24px.svg</file>
-        <file>icons/ic_shopping_basket_24px.svg</file>
-        <file>icons/ic_shopping_cart_24px.svg</file>
-        <file>icons/ic_spa_24px.svg</file>
-        <file>icons/ic_speaker_24px.svg</file>
-        <file>icons/ic_star_24px.svg</file>
-        <file>icons/ic_star_border_24px.svg</file>
-        <file>icons/ic_star_half_24px.svg</file>
-        <file>icons/ic_store_24px.svg</file>
-        <file>icons/ic_theaters_24px.svg</file>
-        <file>icons/ic_toys_24px.svg</file>
-        <file>icons/ic_traffic_24px.svg</file>
-        <file>icons/ic_train_24px.svg</file>
-        <file>icons/ic_tv_24px.svg</file>
-        <file>icons/ic_videogame_asset_24px.svg</file>
-        <file>icons/ic_volume_down_24px.svg</file>
-        <file>icons/ic_volume_mute_24px.svg</file>
-        <file>icons/ic_volume_off_24px.svg</file>
-        <file>icons/ic_volume_up_24px.svg</file>
-        <file>icons/ic_watch_later_24px.svg</file>
-        <file>icons/ic_wb_cloudy_24px.svg</file>
-        <file>icons/ic_work_24px.svg</file>
-        <file>sounds/computers.wav</file>
-        <file>sounds/enter.wav</file>
-        <file>sounds/selected.wav</file>
-        <file>sounds/welcome.wav</file>
-        <file>icons/ic_arrow_back_24px.svg</file>
-        <file>icons/ic_menu_24px.svg</file>
         <file>PlaybarModel.qml</file>
         <file>Theme.qml</file>
-        <file>icons/ic_fire_24px.svg</file>
-        <file>icons/ic_heart_24px.svg</file>
         <file>AboutForm.ui.qml</file>
     </qresource>
 </RCC>
