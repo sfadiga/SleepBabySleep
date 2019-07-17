@@ -9,55 +9,38 @@ Item {
     id: root
 
     property alias audio: audio
-    property string sound_src: ""
-    property string color_text: ""
+    property alias soundItemButton: soundItemButton
+
     property string label: ""
-    property string icon_src: ""
-
-    property variant popup_ref: 0
-    property variant volume_ref: 0
-    property variant playbar_model_ref: 0
-    property variant playbar_ref: 0
-
-    //width: 90
+    property string colorText: ""
+    property string soundSource: ""
+    property string iconSource: ""
 
     Audio {
         id: audio
-        source: root.sound_src
-        volume: root.volume_ref
+        source: root.soundSource
+        volume: currentVolume
     }
 
     ColumnLayout {
         id: column
         width: 90
         Button {
-            id: rbutton
+            id: soundItemButton
             Layout.alignment: Qt.AlignHCenter
             Layout.preferredWidth: 70
             Layout.preferredHeight: 70
 
             background: Rectangle {
-                id: rec
+                id: backgroundRectangle
                 radius: 35 // make it round
                 color: Theme.buttonBackgroundColor
             }
             icon {
                 width: 50
                 height: 50
-                source: root.icon_src
-                color: root.color_text
-            }
-
-            onPressed: audio.play()
-            onPressAndHold: {
-                if(playbar_ref != 0) {
-                    playbar_ref.remove(model)
-                }
-                else {
-                    playbar_model_ref.append(model)
-                    //console.log(model)
-                    popup_ref.open()
-                }
+                source: root.iconSource
+                color: root.colorText
             }
         }
         Label{
@@ -68,7 +51,7 @@ Item {
             Layout.preferredWidth: column.width
             text: root.label
             font.pointSize: 11
-            color: root.color_text
+            color: root.colorText
         }
     } //Column
 } // Item

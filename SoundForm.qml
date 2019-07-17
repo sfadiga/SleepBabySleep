@@ -4,10 +4,6 @@ import Theme 1.0
 Page {
     id: root
 
-    property var playbar_model: 0
-    property var popup_from_ref: 0
-    property var current_volume_ref: 0
-
     title: qsTr("Sleep Baby Sleep")
 
     SwipeView {
@@ -15,11 +11,12 @@ Page {
         anchors.fill: parent
 
         Repeater {
-            model: SoundModel{}
+            model: SoundModel { }
             delegate:
                 SwipeDelegate {
                 id: swipeDelegate
                 Page {
+                    id: soundListPage
                     anchors.fill: parent
                     background: Rectangle {
                         color: Theme.backgroundColor
@@ -27,9 +24,7 @@ Page {
 
                     Column {
                         id: column
-
                         anchors.fill: parent
-
                         Rectangle {
                             id: categoryRectangle
                             width: parent.width
@@ -63,19 +58,23 @@ Page {
 
                             delegate: SoundItem {
                                 id: soundItem
-                                sound_src: sound
-                                color_text: colorCode
+                                soundSource: sound
+                                colorText: colorCode
                                 label: name
-                                icon_src: image
-                                playbar_model_ref: playbar_model
-                                popup_ref: popup_from_ref
-                                volume_ref: current_volume_ref
+                                iconSource: image
+                                soundItemButton.onDoubleClicked: { addToPlaylist(model) }
+                                soundItemButton.onPressed: { audio.play() }
                             }
                         }
                     } // column
                 } // page
             } // delegate
         }
+    }
+
+    function addToPlaylist(model) {
+        playlistModel.append(model)
+        playlistPane.open()
     }
 
     PageIndicator {

@@ -8,7 +8,6 @@
         <file>HelpForm.ui.qml</file>
         <file>SettingsForm.qml</file>
         <file>SoundModel.qml</file>
-        <file>PlaybarModel.qml</file>
         <file>Theme.qml</file>
         <file>AboutForm.ui.qml</file>
     </qresource>

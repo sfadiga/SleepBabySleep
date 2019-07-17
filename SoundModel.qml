@@ -7,21 +7,18 @@ ListModel {
         categoryColor: "indigo"
         contents: [
             ListElement {
-                code: 1
                 name: qsTr("Clock")
                 colorCode: "darkmagenta"
                 sound: "qrc:/sounds/computers.wav"
                 image: "qrc:/icons/ic_alarm_24px.svg"
             },
             ListElement {
-                code: 2
                 name: qsTr("Computer")
                 colorCode: "darkmagenta"
                 sound: "qrc:/sounds/selected.wav"
                 image: "qrc:/icons/ic_speaker_24px.svg"
             },
             ListElement {
-                code: 3
                 name: qsTr("Fan")
                 colorCode: "darkmagenta"
                 sound: "qrc:/sounds/welcome.wav"

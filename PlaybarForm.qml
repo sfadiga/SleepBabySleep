@@ -7,15 +7,16 @@ import Theme 1.0
 import Qt.labs.settings 1.1
 
 ToolBar {
-    id: toolBar
+    id: playBar
 
-    property bool isplaying: false
-    property alias pop: pop
+    property alias playlistPane: playlistPopup
     property alias currentVolume: slider.value
-
-    property string playlistSaved: ""
+    property alias playlistModel: playBar.playlistModel
 
     readonly property int time_base: 60000
+
+    property bool isplaying: false
+    property var playlistModel: ListModel {}
 
     position: ToolBar.Footer
     padding: 5
@@ -266,7 +267,7 @@ ToolBar {
             }
 
             TapHandler {
-                onTapped: muteControl()
+                onTapped: save()//muteControl()
             }
         }
 
@@ -282,13 +283,13 @@ ToolBar {
                 height: 30
             }
             TapHandler {
-                onTapped: pop.open()
+                onTapped: playlistPopup.open()
             }
         }
     }
 
     Popup {
-        id: pop
+        id: playlistPopup
         dim:true
         modal: true
         focus: true
@@ -320,53 +321,32 @@ ToolBar {
             }
 
             ListView {
-                id: playQueueView
+                id: playlistView
                 spacing: 5
-
-                height: parent.height// - playlistLabel.height
+                height: parent.height
                 width: parent.width
-
                 orientation: ListView.Horizontal
-
-                model: playQueueModel
+                model: playlistModel
 
                 delegate: SoundItem {
+                    id: soundItem
                     width: 90
                     height: 90
-                    id: soundItem
-                    sound_src: sound
-                    color_text: colorCode
+                    soundSource: sound
+                    colorText: colorCode
                     label: name
-                    icon_src: image
-                    playbar_ref: playQueueModel
+                    iconSource: image
+                    soundItemButton.onDoubleClicked: { removeFromPlaylist(playlistView.currentIndex) }
+                    soundItemButton.onPressed: { audio.play() }
                 }
             }
         }
     }
 
-    Settings {
-        id: settings
-        property alias playlistSaved: toolBar.playlistSaved
+    function removeFromPlaylist(index) {
+        playlistModel.remove(index)
     }
 
-    Component.onDestruction: {
-        var datamodel = []
-        for(var i = 0; i < playQueueView.model.count; ++i) {
-            var d = JSON.stringify(playQueueView.model.get(i))
-            console.log(d)
-            datamodel.push(d)
-        }
-        //console.log(JSON.stringify(datamodel))
-        //playlistSaved =
-    }
 
-    Component.onCompleted: {
-        if (playlistSaved) {
-            playQueueModel.clear()
-            var data = JSON.parse(playlistSaved)
-            for(var i = 0; i < data.length; ++i)
-                playQueueModel.append(data[i])
-        }
-    }
 }
 
