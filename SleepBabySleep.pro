@@ -1,5 +1,6 @@
 QT += qml quick svg xml core gui multimedia
-CONFIG += c++11
+
+android: QT += androidextras
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -13,11 +14,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+        radialbar.cpp
 
 RESOURCES += qml.qrc \
     images.qrc \
     sounds.qrc
+
+#ifdef Q_OS_ANDROID
+INCLUDEPATH += D:\Dev\Qt\5.13.0\android_x86\include\
+LIBS += -landroid
+#endif
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -29,6 +36,7 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
 
 DISTFILES += \
     android/AndroidManifest.xml \
@@ -43,3 +51,6 @@ contains(ANDROID_TARGET_ARCH,x86) {
     ANDROID_PACKAGE_SOURCE_DIR = \
         $$PWD/android
 }
+
+HEADERS += \
+    radialbar.h

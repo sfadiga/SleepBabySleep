@@ -1,8 +1,29 @@
 <RCC>
     <qresource prefix="/">
-        <file>sounds/computers.wav</file>
-        <file>sounds/enter.wav</file>
-        <file>sounds/selected.wav</file>
-        <file>sounds/welcome.wav</file>
+        <file>sounds/moto.wav</file>
+        <file>sounds/aircraft.wav</file>
+        <file>sounds/bus.wav</file>
+        <file>sounds/car.wav</file>
+        <file>sounds/coffeeshop.wav</file>
+        <file>sounds/dishwasher.wav</file>
+        <file>sounds/faucet.wav</file>
+        <file>sounds/fire.wav</file>
+        <file>sounds/forest.wav</file>
+        <file>sounds/hairdryer.wav</file>
+        <file>sounds/hairdryer2.wav</file>
+        <file>sounds/hairdryer3.wav</file>
+        <file>sounds/heart.wav</file>
+        <file>sounds/heart2.wav</file>
+        <file>sounds/metro.wav</file>
+        <file>sounds/microwave.wav</file>
+        <file>sounds/microwave2.wav</file>
+        <file>sounds/playground.wav</file>
+        <file>sounds/rain.wav</file>
+        <file>sounds/rain2.wav</file>
+        <file>sounds/shaver.wav</file>
+        <file>sounds/shopping.wav</file>
+        <file>sounds/stream.wav</file>
+        <file>sounds/trolley.wav</file>
+        <file>sounds/washingmachine.wav</file>
     </qresource>
 </RCC>

@@ -7,16 +7,16 @@ import Theme 1.0
 
 Item {
     id: root
-
+    z:1
     property alias audio: audio
-    property alias soundItemButton: soundItemButton
 
     property string label: ""
     property string colorText: ""
     property string soundSource: ""
     property string iconSource: ""
 
-    Audio {
+
+    SoundEffect {
         id: audio
         source: root.soundSource
         volume: currentVolume
@@ -25,7 +25,7 @@ Item {
     ColumnLayout {
         id: column
         width: 90
-        Button {
+        RoundButton {
             id: soundItemButton
             Layout.alignment: Qt.AlignHCenter
             Layout.preferredWidth: 70
@@ -41,6 +41,23 @@ Item {
                 height: 50
                 source: root.iconSource
                 color: root.colorText
+            }
+            states: [
+                State {
+                    name: "on"
+                    when: tapHandler.pressed
+                    PropertyChanges { target: soundItemButton; opacity: 0.5 }
+                },
+                State {
+                    name: "off"
+                    when: !tapHandler.pressed
+                    PropertyChanges { target: soundItemButton; opacity: 1.0 }
+                }]
+
+            TapHandler {
+                id: tapHandler
+                onTapped: audio.play()
+                onLongPressed: operate()
             }
         }
         Label{

@@ -75,5 +75,10 @@
         <file>icons/ic_watch_later_24px.svg</file>
         <file>icons/ic_wb_cloudy_24px.svg</file>
         <file>icons/ic_work_24px.svg</file>
+        <file>android_icon_high.png</file>
+        <file>icons/ic_playlist_play_24px.svg</file>
+        <file>icons/ic_hairdryer_24px.svg</file>
+        <file>icons/ic_vacuumcleaner_24px.svg</file>
+        <file>icons/ic_computer_24px.svg</file>
     </qresource>
 </RCC>

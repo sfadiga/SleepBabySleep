@@ -3,14 +3,13 @@ import QtQuick.Controls 2.12
 import Theme 1.0
 Page {
     id: root
-
     title: qsTr("Sleep Baby Sleep")
-
     SwipeView {
-        id: view
+        id: swipeView
         anchors.fill: parent
 
         Repeater {
+            id: repeater
             model: SoundModel { }
             delegate:
                 SwipeDelegate {
@@ -21,20 +20,21 @@ Page {
                     background: Rectangle {
                         color: Theme.backgroundColor
                     }
-
                     Column {
                         id: column
                         anchors.fill: parent
                         Rectangle {
                             id: categoryRectangle
+                            z: 5 // avoid unwanted effect of sound icons over the label
                             width: parent.width
-                            height: 30
+                            height: 40
                             color: categoryColor
                             Text {
                                 antialiasing: true
                                 anchors.verticalCenter: categoryRectangle.verticalCenter
+                                anchors.horizontalCenter: categoryRectangle.horizontalCenter
                                 text: categoryTitle
-                                font.pointSize: 14
+                                font.pointSize: 16
                                 font.bold: true
                                 font.letterSpacing: 2
                                 padding: 10
@@ -44,47 +44,62 @@ Page {
 
                             }
                         } // category rectangle
-
                         GridView {
-                            id: soundGrid
-                            leftMargin: 10
-                            topMargin: 5
+                            id: gridView
+
+                            property var contentHeight: 110
+                            property var contentWidth: 90
+
                             height: parent.height
                             width: parent.width
-                            cellHeight: 110
-                            cellWidth: 90
+
+                            cellHeight: contentHeight
+                            cellWidth: Math.floor(parent.width / Math.floor(parent.width / contentWidth))
 
                             model: contents
 
-                            delegate: SoundItem {
-                                id: soundItem
-                                soundSource: sound
-                                colorText: colorCode
-                                label: name
-                                iconSource: image
-                                soundItemButton.onDoubleClicked: { addToPlaylist(model) }
-                                soundItemButton.onPressed: { audio.play() }
+                            delegate: Component {
+                                id: rectComp
+                                Item {
+                                    width: gridView.cellWidth
+                                    height: gridView.cellHeight
+                                    SoundItem {
+                                        id: soundItem
+
+                                        anchors {
+                                            fill: parent
+                                            topMargin: 5
+                                        }
+                                        soundSource: sound
+                                        colorText: colorCode
+                                        label: name
+                                        iconSource: image
+
+                                        function operate() {
+                                            var m = model
+                                            playlistModel.append({name: m.name, colorCode: m.colorCode, sound: m.sound, image: m.image})
+                                            playlistPane.open()
+                                            window.save()
+                                        }
+                                    }
+                                }
                             }
                         }
                     } // column
                 } // page
             } // delegate
-        }
-    }
-
-    function addToPlaylist(model) {
-        playlistModel.append(model)
-        playlistPane.open()
+        } // repeater
     }
 
     PageIndicator {
         id: indicator
 
-        count: view.count
-        currentIndex: view.currentIndex
+        count: swipeView.count
+        currentIndex: swipeView.currentIndex
 
-        anchors.bottom: view.bottom
+        anchors.bottom: swipeView.bottom
         anchors.horizontalCenter: parent.horizontalCenter
+
         delegate:  Rectangle {
             implicitWidth: 15
             implicitHeight: 15
@@ -92,7 +107,7 @@ Page {
             radius: width
             color: Theme.topBarColor
 
-            opacity: index === view.currentIndex ? 0.95 : pressed ? 0.7 : 0.45
+            opacity: index === swipeView.currentIndex ? 0.95 : pressed ? 0.7 : 0.45
 
             Behavior on opacity {
                 OpacityAnimator {
@@ -101,5 +116,4 @@ Page {
             }
         }
     }
-
 }

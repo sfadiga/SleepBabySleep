@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls.Styles 1.4
 import QtMultimedia 5.12
 import Theme 1.0
+import RadialBar 1.0
 import Qt.labs.settings 1.1
 
 ToolBar {
@@ -13,14 +14,14 @@ ToolBar {
     property alias currentVolume: slider.value
     property alias playlistModel: playBar.playlistModel
 
-    readonly property int time_base: 60000
-
+    property real beforeMuteVolume: 0
     property bool isplaying: false
     property var playlistModel: ListModel {}
+    readonly property int timeBase: 1000
 
     position: ToolBar.Footer
     padding: 5
-    height: 60
+    height: 70
     width: parent.width
 
     background: Rectangle {
@@ -28,39 +29,43 @@ ToolBar {
     }
 
     function playStart() {
-        for(var i = 0 ; i < playQueueView.count ; i++) {
-            var item = playQueueView.itemAtIndex(i)
-            item.audio.loops = Audio.Infinite
+        if (!playlistView.currentItem) {
+            playlistPopup.open()
+            return
+        }
+        for(var i = 0 ; i < playlistView.count ; i++) {
+            var item = playlistView.itemAtIndex(i)
+            item.audio.loops = SoundEffect.Infinite
             item.audio.volume = slider.value
             item.audio.play()
         }
         isplaying = true
         buttonPlay.state = "playing"
-        if(buttonLoop.state != "0") {
-            loopTimer.interval = loopLabel.text * time_base
-
+        if(buttonLoop.state !== "0") {
+            loopTimer.interval = buttonLoop.loopLabel * timeBase * 60
+            buttonLoop.progress = 0
             loopTimer.start()
             displayTimer.start()
         }
     }
 
     function playStop() {
-        for(var i = 0 ; i < playQueueView.count ; i++) {
-            var item = playQueueView.itemAtIndex(i)
+        for(var i = 0 ; i < playlistView.count ; i++) {
+            var item = playlistView.itemAtIndex(i)
             item.audio.stop()
         }
         isplaying = false
         buttonPlay.state = "stoped"
-        if(buttonLoop.state != "0") {
+        if(buttonLoop.state !== "0") {
             loopTimer.stop()
             displayTimer.stop()
-            loopLabel.text = buttonLoop.state
+            buttonLoop.loopLabel = buttonLoop.state
         }
 
     }
 
     function playControl() {
-        if(playQueueModel.count > 0)
+        if(playlistModel.count > 0)
         {
             if(isplaying) {
                 playStop()
@@ -86,49 +91,51 @@ ToolBar {
         else if (buttonLoop.state === "60")
             buttonLoop.state = "0"
 
-        if (buttonLoop.state != "0")
-            loopTimer.interval = loopLabel.text * time_base
-        else
-        {
+        if (buttonLoop.state !== "0") {
+            loopTimer.interval = buttonLoop.loopLabel * timeBase
+            loopTimer.stop()
+            displayTimer.stop()
+            progressBar.value = 0
+            if(isplaying) {
+                loopTimer.start()
+                displayTimer.start()
+            }
+        } else {
             loopTimer.stop()
             displayTimer.stop()
         }
     }
 
     function volumeControl() {
-        if (playQueueModel.count > 0 && isplaying) {
-            for(var i = 0 ; i < playQueueView.count ; i++) {
-                var item = playQueueView.itemAtIndex(i)
-                item.audio.volume = slider.value
+        if (playlistModel.count > 0 && isplaying) {
+            for(var i = 0 ; i < playlistView.count ; i++) {
+                var item = playlistView.itemAtIndex(i)
+                item.audio.volume = playBar.currentVolume
             }
         }
-        if (slider.value > 0.5)
-            volumeButton.icon.source = "qrc:/icons/ic_volume_up_24px.svg"
-        else if (slider.value < 0.5 && slider.value > 0)
-            volumeButton.icon.source = "qrc:/icons/ic_volume_down_24px.svg"
-        else if (slider.value === 0)
-            volumeButton.icon.source = "qrc:/icons/ic_volume_off_24px.svg"
-
     }
 
     function muteControl() {
-        if (slider.value > 0)
+        if (slider.value > 0) {
+            playBar.beforeMuteVolume = slider.value
             slider.value = 0
-        else
-            slider.value = 0.6
+        } else {
+            slider.value = playBar.beforeMuteVolume
+        }
     }
 
     Timer {
         id: loopTimer
         interval: 0
         onTriggered: playStop()
-
     }
     Timer { // updates the icon label minute by minute
         id: displayTimer
-        interval: time_base
+        interval: timeBase
         repeat: true
-        onTriggered: loopLabel.text = loopLabel.text - 1 //JS is the crazy language, this works as intended!
+        onTriggered: {
+            buttonLoop.progress += 100 * (1/(buttonLoop.loopLabel * 60)) //360 is 100% complete
+        }
     }
 
     RowLayout {
@@ -162,8 +169,11 @@ ToolBar {
             ]
         }
 
-        RoundButton {
+         RoundButton {
             id: buttonLoop
+            property alias progress: progressBar.value
+            property alias loopLabel: loopLabel.text
+
             Layout.alignment: Qt.AlignLeft
             Layout.minimumHeight: 50
             Layout.minimumWidth: 50
@@ -179,44 +189,69 @@ ToolBar {
                 text: ""
                 font.pointSize: 20
             }
+
             TapHandler {
                 onTapped: loopControl()
             }
-
             states: [
                 State {
                     name: "0"
                     PropertyChanges { target: buttonLoop; icon.source: "qrc:/icons/ic_all_inclusive_24px.svg" }
+                    PropertyChanges { target: progressBar; visible: false}
+                    PropertyChanges { target: progressBar; value: 0}
                     PropertyChanges { target: loopLabel; text: "" }
                 },
                 State {
                     name: "5"
                     PropertyChanges { target: loopLabel; text: "5" }
+                    PropertyChanges { target: progressBar; visible: true}
                     PropertyChanges { target: buttonLoop; icon.source: "" }
                 },
                 State {
                     name: "15"
                     PropertyChanges { target: loopLabel; text: "15" }
+                    PropertyChanges { target: progressBar; visible: true}
                     PropertyChanges { target: buttonLoop; icon.source: "" }
                 },
                 State {
                     name: "30"
                     PropertyChanges { target: loopLabel; text: "30" }
+                    PropertyChanges { target: progressBar; visible: true}
                     PropertyChanges { target: buttonLoop; icon.source: "" }
                 },
                 State {
                     name: "45"
                     PropertyChanges { target: loopLabel; text: "45" }
+                    PropertyChanges { target: progressBar; visible: true}
                     PropertyChanges { target: buttonLoop; icon.source: "" }
                 },
                 State {
                     name: "60"
                     PropertyChanges { target: loopLabel; text: "60" }
+                    PropertyChanges { target: progressBar; visible: true}
                     PropertyChanges { target: buttonLoop; icon.source: "" }
                 }
             ]
 
             Component.onCompleted: buttonLoop.state = 0
+
+            RadialBar {
+                id: progressBar
+                antialiasing: true
+                width: buttonLoop.width
+                height: buttonLoop.height
+                penStyle: Qt.MiterJoin
+                dialType: RadialBar.FullDial
+                progressColor: "lightgreen"
+                foregroundColor: "darkslategray"
+                dialWidth: 4
+                startAngle: 180
+                spanAngle: 70
+                minValue: 0
+                maxValue: 100
+                value: 0
+                showText: false
+            }
         }
 
         Slider {
@@ -266,8 +301,27 @@ ToolBar {
                 height: 30
             }
 
+            states: [
+                State {
+                    name: "100"
+                    when: slider.value > 0.5
+                    PropertyChanges { target: volumeButton; icon.source: "qrc:/icons/ic_volume_up_24px.svg" }
+                },
+                State {
+                    name: "50"
+                    when: slider.value < 0.5 & slider.value > 0
+                    PropertyChanges { target: volumeButton; icon.source: "qrc:/icons/ic_volume_down_24px.svg" }
+                },
+                State {
+                    name: "0"
+                    when: slider.value == 0
+                    PropertyChanges { target: volumeButton; icon.source: "qrc:/icons/ic_volume_off_24px.svg" }
+                }
+
+            ]
+
             TapHandler {
-                onTapped: save()//muteControl()
+                onTapped: muteControl()
             }
         }
 
@@ -277,7 +331,7 @@ ToolBar {
             Layout.minimumWidth: 50
             Layout.alignment: Qt.AlignRight
             icon {
-                source: "qrc:/icons/ic_playlist_add_check_24px.svg"
+                source: playlistModel.count > 0 ? "qrc:/icons/ic_playlist_play_24px.svg" : "qrc:/icons/ic_playlist_add_24px.svg"
                 color: Theme.playbarIconColor
                 width: 30
                 height: 30
@@ -294,13 +348,14 @@ ToolBar {
         modal: true
         focus: true
         parent: Overlay.overlay
+
         closePolicy: Popup.CloseOnPressOutside
 
         x: Math.round((parent.width - width) / 2)
         y: Math.round((parent.height - height))
 
         width: parent.width
-        height: 160
+        height: playBar.parent.height / 3
 
         background: Rectangle {
             color: Theme.playlistPaneColor
@@ -308,14 +363,14 @@ ToolBar {
 
         Column {
             anchors.fill: parent
-            spacing: 5
+            spacing: 10
             Label {
                 id: playlistLabel
                 text: qsTr("Playlist:")
                 style: Text.Outline
                 styleColor: "black"
                 font.bold: true
-                font.pointSize: 12
+                font.pointSize: 14
                 font.letterSpacing: 2
                 color: "white"
             }
@@ -326,6 +381,7 @@ ToolBar {
                 height: parent.height
                 width: parent.width
                 orientation: ListView.Horizontal
+
                 model: playlistModel
 
                 delegate: SoundItem {
@@ -336,17 +392,13 @@ ToolBar {
                     colorText: colorCode
                     label: name
                     iconSource: image
-                    soundItemButton.onDoubleClicked: { removeFromPlaylist(playlistView.currentIndex) }
-                    soundItemButton.onPressed: { audio.play() }
+                    function operate() {
+                        playlistModel.remove(index)
+                        window.save()
+                    }
                 }
             }
         }
     }
-
-    function removeFromPlaylist(index) {
-        playlistModel.remove(index)
-    }
-
-
 }
 

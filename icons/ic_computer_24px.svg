@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg4554"
+   sodipodi:docname="ic_computer_24px.svg"
+   inkscape:version="0.92.1 r15371">
+  <metadata
+     id="metadata4560">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4558" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview4556"
+     showgrid="false"
+     inkscape:lockguides="true"
+     inkscape:zoom="6.9532165"
+     inkscape:cx="49.84226"
+     inkscape:cy="-15.143989"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4554" />
+  <rect
+     style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:4.47759056;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4.47759116, 35.82072925;stroke-dashoffset:0;stroke-opacity:1"
+     id="rect6266"
+     width="14.527797"
+     height="4.7751527"
+     x="3.4091523"
+     y="18.44356"
+     ry="0.52134144"
+     rx="0.52134144" />
+  <path
+     inkscape:connector-curvature="0"
+     d="M 21.152649,1.2653494 H 3.1526494 c -1.1,0 -2,0.7993272 -2,1.7762826 v 10.657695 c 0,0.976956 0.9,1.776283 2,1.776283 h 5 v 1.776282 H 16.152649 V 15.47561 h 5 c 1.1,0 1.99,-0.799327 1.99,-1.776283 l 0.01,-10.657695 c 0,-0.9769554 -0.9,-1.7762826 -2,-1.7762826 z m 0,12.4339776 H 3.1526494 V 3.041632 H 21.152649 Z"
+     id="path6827"
+     style="stroke-width:0.9424125" />
+  <ellipse
+     style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.84772146;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.84772146, 14.78177168;stroke-dashoffset:0;stroke-opacity:1"
+     id="path7408"
+     cx="21.101696"
+     cy="20.755545"
+     rx="1.3369268"
+     ry="2.0847459" />
+</svg>

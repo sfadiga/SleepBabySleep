@@ -19,16 +19,16 @@ QtObject {
     } else if (theme.themeSelect === "girl"){
         "antiquewhite"
     } else {
-        "lightcyan"
+        "moccasin"
     }
 
     readonly property color topBarColor:
     if (theme.themeSelect === "boy"){
         "royalblue"
     } else if (theme.themeSelect === "girl"){
-        "lightsalmon"
+        "salmon"
     } else {
-        "gold"
+        "goldenrod"
     }
 
     readonly property color playBarColor:
@@ -44,16 +44,16 @@ QtObject {
     if (theme.themeSelect === "boy"){
         Qt.lighter(topBarColor)
     } else if (theme.themeSelect === "girl"){
-        Qt.lighter(topBarColor)
+        "antiquewhite"
     } else {
-        Qt.lighter(topBarColor)
+        "moccasin"
     }
 
     readonly property color buttonBackgroundColor:
     if (theme.themeSelect === "boy"){
         "paleturquoise"
     } else if (theme.themeSelect === "girl"){
-        "bisque"
+        "pink"
     } else {
         "gold"
     }
@@ -62,9 +62,9 @@ QtObject {
     if (theme.themeSelect === "boy"){
         Qt.lighter(playBarColor)
     } else if (theme.themeSelect === "girl"){
-        Qt.lighter(playBarColor)
+        "antiquewhite"
     } else {
-        Qt.lighter(playBarColor)
+        Qt.lighter("gold")
     }
 
 }

@@ -10,5 +10,7 @@
         <file>SoundModel.qml</file>
         <file>Theme.qml</file>
         <file>AboutForm.ui.qml</file>
+        <file>MainWindow.qml</file>
+        <file>Splashscreen.qml</file>
     </qresource>
 </RCC>
