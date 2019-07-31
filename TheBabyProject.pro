@@ -13,13 +13,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+HEADERS += \
+        radialbar.h
+
 SOURCES += \
         main.cpp \
         radialbar.cpp
 
 RESOURCES += qml.qrc \
-    images.qrc \
-    sounds.qrc
+          images.qrc \
+          sounds.qrc \
+          translations.qrc
+
+android: HEADERS += notificationclient.h
+android: SOURCES += notificationclient.cpp
+
+TRANSLATIONS += translations/theme_pt.ts
 
 #ifdef Q_OS_ANDROID
 INCLUDEPATH += D:\Dev\Qt\5.13.0\android_x86\include\
@@ -45,12 +54,13 @@ DISTFILES += \
     android/gradle/wrapper/gradle-wrapper.properties \
     android/gradlew \
     android/gradlew.bat \
-    android/res/values/libs.xml
+    android/res/values/libs.xml \
+    android/res/values/strings.xml \
+    android/res/values-pt/strings.xml \
+    android/src/br/sandrofadiga/NotificationClient.java
 
 contains(ANDROID_TARGET_ARCH,x86) {
     ANDROID_PACKAGE_SOURCE_DIR = \
         $$PWD/android
 }
 
-HEADERS += \
-    radialbar.h

@@ -1,8 +1,8 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
+import QtQuick 2.13
+import QtQuick.Controls 2.13
+import QtQuick.Layouts 1.13
 import QtQuick.Controls.Styles 1.4
-import QtMultimedia 5.12
+import QtMultimedia 5.13
 import Theme 1.0
 import RadialBar 1.0
 import Qt.labs.settings 1.1
@@ -47,6 +47,7 @@ ToolBar {
             loopTimer.start()
             displayTimer.start()
         }
+        notificationClient.notification = Theme.playingMessage
     }
 
     function playStop() {
@@ -61,7 +62,7 @@ ToolBar {
             displayTimer.stop()
             buttonLoop.loopLabel = buttonLoop.state
         }
-
+        notificationClient.notification = ""
     }
 
     function playControl() {
@@ -242,8 +243,8 @@ ToolBar {
                 height: buttonLoop.height
                 penStyle: Qt.MiterJoin
                 dialType: RadialBar.FullDial
-                progressColor: "lightgreen"
-                foregroundColor: "darkslategray"
+                progressColor: Theme.playbarLoopProgressColor
+                foregroundColor: Theme.playbarLoopForegroundColor
                 dialWidth: 4
                 startAngle: 180
                 spanAngle: 70
@@ -270,12 +271,12 @@ ToolBar {
                 width: slider.availableWidth
                 height: implicitHeight
                 radius: 2
-                color: "lightgray"
+                color: Theme.playbarSliderColor
 
                 Rectangle {
                     width: slider.visualPosition * parent.width
                     height: parent.height
-                    color: Qt.darker("darkgray")
+                    color: Theme.playbarSliderBackgroundColor
                     radius: 2
                 }
             }
@@ -285,8 +286,8 @@ ToolBar {
                 implicitWidth: 30
                 implicitHeight: 30
                 radius: 15
-                color: slider.pressed ? "#f0f0f0" : "#f6f6f6"
-                border.color: "#bdbebf"
+                color: slider.pressed ? Theme.playbarSliderHandlerPressedColor : Theme.playbarSliderHandlerNormalColor
+                border.color: Theme.playbarSliderHandlerBorderColor
             }
         }
 
@@ -361,18 +362,21 @@ ToolBar {
             color: Theme.playlistPaneColor
         }
 
+        onOpened: stackView.enabled = false
+        onClosed: stackView.enabled = true
+
         Column {
             anchors.fill: parent
             spacing: 10
             Label {
                 id: playlistLabel
-                text: qsTr("Playlist:")
+                text: Theme.playlistText.arg(playlistModel.count > 0 ? "" : Theme.playlistEmptyText)
                 style: Text.Outline
-                styleColor: "black"
+                styleColor: Theme.playlistPopupLabelStyleColor
                 font.bold: true
                 font.pointSize: 14
                 font.letterSpacing: 2
-                color: "white"
+                color: Theme.playlistPopupLabelColor
             }
 
             ListView {
@@ -388,12 +392,11 @@ ToolBar {
                     id: soundItem
                     width: 90
                     height: 90
-                    soundSource: sound
-                    colorText: colorCode
-                    label: name
-                    iconSource: image
                     function operate() {
                         playlistModel.remove(index)
+                        if(playlistModel.count === 0) {
+                            playStop()
+                        }
                         window.save()
                     }
                 }

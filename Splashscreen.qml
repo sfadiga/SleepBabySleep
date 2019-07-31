@@ -1,6 +1,6 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Window 2.12
+import QtQuick 2.13
+import QtQuick.Controls 2.13
+import QtQuick.Window 2.13
 import Theme 1.0
 import Qt.labs.settings 1.1
 
@@ -12,8 +12,8 @@ Item {
         id: splashRect
         anchors.fill: parent
         color: Theme.topBarColor
-        border.width: 1
-        border.color: "black"
+        border.width: 6
+        border.color: Qt.darker(Theme.topBarColor)
 
         Image {
             id: appLogo
@@ -25,7 +25,7 @@ Item {
 
         Text {
             id: appName
-            text: qsTr("Sleep Baby Sleep")
+            text: Theme.applicationTitle
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: appLogo.bottom
             anchors.topMargin: 30
@@ -86,7 +86,7 @@ Item {
                             implicitWidth: 10
                             implicitHeight: 10
                             radius: 5
-                            color: "red"
+                            color: Qt.darker(Theme.topBarColor)
                             transform: [
                                 Translate {
                                     y: -Math.min(item.width, item.height) * 0.5 + 5

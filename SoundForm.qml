@@ -1,9 +1,9 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.13
+import QtQuick.Controls 2.13
 import Theme 1.0
 Page {
     id: root
-    title: qsTr("Sleep Baby Sleep")
+    title: Theme.applicationTitle
     SwipeView {
         id: swipeView
         anchors.fill: parent
@@ -47,7 +47,7 @@ Page {
                         GridView {
                             id: gridView
 
-                            property var contentHeight: 110
+                            property var contentHeight: 120
                             property var contentWidth: 90
 
                             height: parent.height
@@ -55,6 +55,10 @@ Page {
 
                             cellHeight: contentHeight
                             cellWidth: Math.floor(parent.width / Math.floor(parent.width / contentWidth))
+
+                            ScrollBar.vertical: ScrollBar {
+                                visible: false
+                            }
 
                             model: contents
 
@@ -65,19 +69,13 @@ Page {
                                     height: gridView.cellHeight
                                     SoundItem {
                                         id: soundItem
-
                                         anchors {
                                             fill: parent
                                             topMargin: 5
                                         }
-                                        soundSource: sound
-                                        colorText: colorCode
-                                        label: name
-                                        iconSource: image
-
                                         function operate() {
                                             var m = model
-                                            playlistModel.append({name: m.name, colorCode: m.colorCode, sound: m.sound, image: m.image})
+                                            playlistModel.append({name: m.name, colorCode: m.colorCode, sound: m.sound, image: m.image, type: m.type})
                                             playlistPane.open()
                                             window.save()
                                         }

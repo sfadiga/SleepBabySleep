@@ -5,11 +5,11 @@
         <file>SoundItem.qml</file>
         <file>SoundForm.qml</file>
         <file>PlaybarForm.qml</file>
-        <file>HelpForm.ui.qml</file>
+        <file>HelpForm.qml</file>
         <file>SettingsForm.qml</file>
         <file>SoundModel.qml</file>
         <file>Theme.qml</file>
-        <file>AboutForm.ui.qml</file>
+        <file>AboutForm.qml</file>
         <file>MainWindow.qml</file>
         <file>Splashscreen.qml</file>
     </qresource>

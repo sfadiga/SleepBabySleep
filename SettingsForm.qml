@@ -1,12 +1,12 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
+import QtQuick 2.13
+import QtQuick.Controls 2.13
+import QtQuick.Layouts 1.13
 import Qt.labs.settings 1.1
 import Theme 1.0
 
 Page {
     id: settings
-    title: qsTr("Settings")
+    title: Theme.menuSettingsText
     padding: 10
     background: Rectangle {
         color: Theme.backgroundColor
@@ -23,42 +23,42 @@ Page {
         id: column
 
         Label {
-            text: qsTr("Select a theme:")
+            text: Theme.settingsSelectThemeText
         }
 
 
         RadioButton {
             id: radioButtonBoy
-            text: qsTr("Theme 1")
-            checked: Theme.selectedTheme === "boy"
+            text: Theme.settingsTheme1Text
+            checked: Theme.selectedTheme === "t1"
             ButtonGroup.group: group
         }
 
         RadioButton {
             id: radioButtonGirl
-            text: qsTr("Theme 2")
-            checked: Theme.selectedTheme === "girl"
+            text: Theme.settingsTheme2Text
+            checked: Theme.selectedTheme === "t2"
             ButtonGroup.group: group
         }
 
         RadioButton {
             id: radioButtonBoth
-            text: qsTr("Theme 3")
-            checked: Theme.selectedTheme !== "boy" && Theme.selectedTheme !== "girl"
+            text: Theme.settingsTheme3Text
+            checked: Theme.selectedTheme !== "t1" && Theme.selectedTheme !== "t2"
             ButtonGroup.group: group
         }
 
         states: [
             State {
-                name: "boy"
+                name: "t1"
                 when: radioButtonBoy.checked
             },
             State {
-                name: "girl"
+                name: "t2"
                 when: radioButtonGirl.checked
             },
             State {
-                name: "both"
+                name: "t3"
                 when: radioButtonBoth.checked
 
             }

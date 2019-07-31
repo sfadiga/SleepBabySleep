@@ -1,25 +1,54 @@
-import QtQuick 2.12
-import QtMultimedia 5.12
-import QtQuick.Controls 2.12
-import QtQuick.Controls.Material 2.12
-import QtQuick.Layouts 1.12
+import QtQuick 2.13
+import QtMultimedia 5.13
+import QtQuick.Controls 2.13
+import QtQuick.Controls.Material 2.13
+import QtQuick.Layouts 1.13
 import Theme 1.0
 
 Item {
     id: root
-    z:1
-    property alias audio: audio
 
-    property string label: ""
-    property string colorText: ""
-    property string soundSource: ""
-    property string iconSource: ""
+    property alias audio: audioLoader.item
+    property bool isplaying: false
 
+    Loader {
+        id: audioLoader
+        active: false
+    }
 
-    SoundEffect {
-        id: audio
-        source: root.soundSource
-        volume: currentVolume
+    Component.onCompleted: {
+        if (type === "wav") {
+            audioLoader.sourceComponent = soundComp
+        } else {
+            audioLoader.sourceComponent = audioComp
+        }
+        audioLoader.active = true
+    }
+
+    Component {
+        id: soundComp
+        SoundEffect {
+            id: soundFx
+            source: sound
+            volume: currentVolume
+            onPlayingChanged: {
+                if(playing)
+                    txtLabel.state = "playing"
+                else
+                    txtLabel.state = "stopped"
+            }
+        }
+    }
+
+    Component {
+        id: audioComp
+        Audio {
+            id: soundFx
+            source: sound
+            volume: currentVolume
+            onPlaying: txtLabel.state = "playing"
+            onStopped: txtLabel.state = "stopped"
+        }
     }
 
     ColumnLayout {
@@ -39,68 +68,49 @@ Item {
             icon {
                 width: 50
                 height: 50
-                source: root.iconSource
-                color: root.colorText
+                source: image
+                color: colorCode
             }
             states: [
                 State {
                     name: "on"
-                    when: tapHandler.pressed
+                    when: soundItemButton.pressed
                     PropertyChanges { target: soundItemButton; opacity: 0.5 }
-                },
-                State {
-                    name: "off"
-                    when: !tapHandler.pressed
-                    PropertyChanges { target: soundItemButton; opacity: 1.0 }
+                    PropertyChanges { target: backgroundRectangle; color: Theme.buttonBackgroundSelectedColor }
                 }]
 
-            TapHandler {
-                id: tapHandler
-                onTapped: audio.play()
-                onLongPressed: operate()
+
+            onClicked:
+            {
+                if (root.isplaying) {
+                    root.audio.stop()
+                } else {
+                    root.audio.play()
+                }
+                root.isplaying = !root.isplaying
             }
+
+            onPressAndHold: operate()
+
         }
+
         Label{
             id: txtLabel
             Layout.alignment: Qt.AlignHCenter
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WordWrap
             Layout.preferredWidth: column.width
-            text: root.label
-            font.pointSize: 11
-            color: root.colorText
+            text: name
+            font.pointSize: 12
+            color: Qt.darker(colorCode)
+            states: [
+                State {
+                    name: "playing"
+                    PropertyChanges { target: txtLabel; color: Theme.labelSelectedColor }
+                    PropertyChanges { target: txtLabel; font.bold: true }
+                    PropertyChanges { target: txtLabel; font.pointSize: 13 }
+                }]
         }
     } //Column
 } // Item
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*##^## Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
- ##^##*/

@@ -4,7 +4,6 @@
         <file>sounds/aircraft.wav</file>
         <file>sounds/bus.wav</file>
         <file>sounds/car.wav</file>
-        <file>sounds/coffeeshop.wav</file>
         <file>sounds/dishwasher.wav</file>
         <file>sounds/faucet.wav</file>
         <file>sounds/fire.wav</file>
@@ -17,7 +16,6 @@
         <file>sounds/metro.wav</file>
         <file>sounds/microwave.wav</file>
         <file>sounds/microwave2.wav</file>
-        <file>sounds/playground.wav</file>
         <file>sounds/rain.wav</file>
         <file>sounds/rain2.wav</file>
         <file>sounds/shaver.wav</file>
@@ -25,5 +23,39 @@
         <file>sounds/stream.wav</file>
         <file>sounds/trolley.wav</file>
         <file>sounds/washingmachine.wav</file>
+        <file>sounds/computer.wav</file>
+        <file>sounds/metro2.wav</file>
+        <file>sounds/metro3.wav</file>
+        <file>sounds/shower.wav</file>
+        <file>sounds/toilet.wav</file>
+        <file>sounds/vacuumcleaner.wav</file>
+        <file>sounds/bar.wav</file>
+        <file>sounds/clock.wav</file>
+        <file>sounds/electricoven.wav</file>
+        <file>sounds/shaker.wav</file>
+        <file>sounds/whitenoise.wav</file>
+        <file>sounds/whitenoise2.wav</file>
+        <file>sounds/music7.mp3</file>
+        <file>sounds/music1.mp3</file>
+        <file>sounds/music2.mp3</file>
+        <file>sounds/music3.mp3</file>
+        <file>sounds/music4.mp3</file>
+        <file>sounds/music5.mp3</file>
+        <file>sounds/music6.mp3</file>
+        <file>sounds/uterus.wav</file>
+        <file>sounds/bedroom.mp3</file>
+        <file>sounds/breadmachine.wav</file>
+        <file>sounds/cofeemachine.wav</file>
+        <file>sounds/coffeeshop.mp3</file>
+        <file>sounds/party.mp3</file>
+        <file>sounds/playground.mp3</file>
+        <file>sounds/fan.wav</file>
+        <file>sounds/hum1.wav</file>
+        <file>sounds/hum2.wav</file>
+        <file>sounds/hum3.wav</file>
+        <file>sounds/shhh.wav</file>
+        <file>sounds/shhh1.wav</file>
+        <file>sounds/car2.wav</file>
+        <file>sounds/fire1.wav</file>
     </qresource>
 </RCC>

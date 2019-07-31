@@ -80,5 +80,17 @@
         <file>icons/ic_hairdryer_24px.svg</file>
         <file>icons/ic_vacuumcleaner_24px.svg</file>
         <file>icons/ic_computer_24px.svg</file>
+        <file>icons/ic_shaver_24px.svg</file>
+        <file>icons/ic_dishwasher_24px.svg</file>
+        <file>icons/ic_local_drink_24px.svg</file>
+        <file>icons/ic_microwave_24px.svg</file>
+        <file>icons/ic_shaker_24px.svg</file>
+        <file>icons/ic_toilet_24.svg</file>
+        <file>icons/ic_wc_24px.svg</file>
+        <file>icons/ic_whatshot_24px.svg</file>
+        <file>icons/ic_faucet_24px.svg</file>
+        <file>icons/ic_shower_24px.svg</file>
+        <file>icons/ic_music_note_24px.svg</file>
+        <file>icons/ic_mom_24px.svg</file>
     </qresource>
 </RCC>

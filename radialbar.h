@@ -51,7 +51,7 @@ class RadialBar : public QQuickPaintedItem
     Q_PROPERTY(QFont textFont READ getTextFont WRITE setTextFont NOTIFY textFontChanged)
 
 public:
-    RadialBar(QQuickItem *parent = 0);
+    RadialBar(QQuickItem *parent = nullptr);
     void paint(QPainter *painter);
 
     enum DialType {

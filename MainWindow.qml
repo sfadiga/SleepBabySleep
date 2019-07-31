@@ -1,8 +1,8 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.13
+import QtQuick.Controls 2.13
 import Qt.labs.settings 1.1
-import QtQuick.Window 2.12
-import QtQuick.Layouts 1.12
+import QtQuick.Window 2.13
+import QtQuick.Layouts 1.13
 import Theme 1.0
 
 Item {
@@ -63,12 +63,12 @@ Item {
                 text: stackView.currentItem.title
                 font.bold: true
                 font.capitalization: Font.AllUppercase
-                font.pointSize: 20
-                font.wordSpacing: 5
-                font.letterSpacing: 2
-                color: Qt.lighter(Theme.topBarColor)
+                font.pointSize: 18
+                font.wordSpacing: 3
+                font.letterSpacing: 1
+                color: Theme.mainWindowLabelColor
                 style: Text.Outline
-                styleColor: Qt.darker(Theme.topBarColor)
+                styleColor: Theme.mainWindowLabelStyleColor
 
             }
         }
@@ -99,7 +99,7 @@ Item {
             Column {
                 anchors.fill: parent
                 ItemDelegate {
-                    text: qsTr("Settings")
+                    text: Theme.menuSettingsText
                     width: parent.width
                     onClicked: {
                         stackView.push("SettingsForm.qml")
@@ -107,18 +107,18 @@ Item {
                     }
                 }
                 ItemDelegate {
-                    text: qsTr("Help")
+                    text: Theme.menuHelpText
                     width: parent.width
                     onClicked: {
-                        stackView.push("HelpForm.ui.qml")
+                        stackView.push("HelpForm.qml")
                         drawer.close()
                     }
                 }
                 ItemDelegate {
-                    text: qsTr("About")
+                    text: Theme.menuAboutText
                     width: parent.width
                     onClicked: {
-                        stackView.push("AboutForm.ui.qml")
+                        stackView.push("AboutForm.qml")
                         drawer.close()
                     }
                 }

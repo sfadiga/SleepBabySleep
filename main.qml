@@ -1,8 +1,8 @@
-import QtQml 2.12
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQml 2.13
+import QtQuick 2.13
+import QtQuick.Controls 2.13
 import Qt.labs.settings 1.1
-import QtQuick.Window 2.12
+import QtQuick.Window 2.13
 import Theme 1.0
 
 ApplicationWindow {

@@ -1,11 +1,16 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQuickView>
+#include <QTranslator>
 
 #ifdef Q_OS_ANDROID
+#include "notificationclient.h"
 #include <QtAndroidExtras>
 #include <QtAndroidExtras/QAndroidJniObject>
 #include <QtAndroidExtras/QtAndroid>
+#include <QtQml/QQmlContext>
 #endif
+
 
 #include "radialbar.h"
 
@@ -14,9 +19,17 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
-    app.setOrganizationName("Kludge Works");
-    app.setOrganizationDomain("br.kludgeworks");
-    app.setApplicationName("SleepBabySleep");
+    app.setOrganizationName("SandroFadiga");
+    app.setOrganizationDomain("br.sandrofadiga");
+    app.setApplicationName("TheBabyProject");
+
+    QTranslator translator;
+
+    if(translator.load(":/translations/theme_" + QLocale::system().name())) {
+        app.installTranslator(&translator);
+    } else {
+        qDebug() << "Unable to load translation";
+    }
 
     qmlRegisterSingletonType(QUrl("qrc:///Theme.qml"), "Theme", 1, 0, "Theme");
     qmlRegisterType<RadialBar>("RadialBar", 1, 0, "RadialBar");
@@ -32,6 +45,9 @@ int main(int argc, char *argv[])
 
 
 #ifdef Q_OS_ANDROID
+    NotificationClient *notificationClient = new NotificationClient(engine.rootObjects().at(0));
+    engine.rootContext()->setContextProperty(QLatin1String("notificationClient"), notificationClient);
+
     QAndroidJniObject m_wakeLock;
     QAndroidJniObject activity = QAndroidJniObject::callStaticObjectMethod("org/qtproject/qt5/android/QtNative", "activity", "()Landroid/app/Activity;");
     if ( activity.isValid() )
