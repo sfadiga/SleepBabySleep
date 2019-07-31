@@ -1,4 +1,4 @@
-# SleepBabySleep
+# The Baby Project - Baby Whisperer App (on playstore)
 
 An app (desktop/mobile) made in QML for help parents put their babies to sleep.
 
@@ -10,9 +10,12 @@ The application is now feature complete (at least I think so :). But it lacks th
 
 * Screeshots:
 
-![SleepBabySleep_FyUMScwd5E](https://user-images.githubusercontent.com/2021800/60928968-bc005800-a285-11e9-9d4f-937c1e78c1b2.png)
+![image](https://user-images.githubusercontent.com/2021800/62234672-8856b080-b3a1-11e9-81e4-34af6b6a2e52.png)
 
-![SleepBabySleep_ZOqX15JHhy](https://user-images.githubusercontent.com/2021800/61087561-525e8600-a40c-11e9-8b0c-bbc8348c2c76.png)
+![image](https://user-images.githubusercontent.com/2021800/62234702-9a385380-b3a1-11e9-9427-8a1a5d85ab7a.png)
+
+![image](https://user-images.githubusercontent.com/2021800/62234733-a6241580-b3a1-11e9-9b89-1ac0a4aa9b2a.png)
+
 
 This is GPL license since I'm planning to deploy the App on Play store (Android version).
 
