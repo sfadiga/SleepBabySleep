@@ -6,7 +6,7 @@ The app has an selection of sounds (still in progress) available to be played to
 
 The application is now feature complete (at least I think so :). But it lacks the wav sound files to be in the final version.
 
-* This version states my total lack of taste for colors :P
+* This version is the closest to release on APP store, the sounds are not present on this repository, but to play with the App source you can add any plain wav and mp3 file and change the sounds.qrc file and the SoundModel.qml file
 
 * Screeshots:
 
