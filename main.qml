@@ -29,7 +29,7 @@ ApplicationWindow {
         anchors.fill: parent
         source: "qrc:/Splashscreen.qml"
         onLoaded: {
-            mainWindowLoader.active = true;
+           mainWindowLoader.active = true;
         }
         onSourceChanged:
         {

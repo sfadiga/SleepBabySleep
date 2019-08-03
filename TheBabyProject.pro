@@ -63,4 +63,48 @@ contains(ANDROID_TARGET_ARCH,x86) {
     ANDROID_PACKAGE_SOURCE_DIR = \
         $$PWD/android
 }
+contains(ANDROID_TARGET_ARCH,x86_64) {
+    ANDROID_PACKAGE_SOURCE_DIR = \
+        $$PWD/android
+}
+contains(ANDROID_TARGET_ARCH, arm64-v8a) {
+    ANDROID_PACKAGE_SOURCE_DIR = \
+        $$PWD/android
+}
+contains(ANDROID_TARGET_ARCH, armeabi-v7a) {
+    ANDROID_PACKAGE_SOURCE_DIR = \
+        $$PWD/android
+}
 
+
+# Increment by 3!
+
+#ITERATION=1
+
+#android: contains(QT_ARCH, i386) {
+#      win32 {
+#            ITERATION = $$system("set /a $$ITERATION + 1")
+#        } else:unix {
+#            ITERATION = $$system("echo $(($$ITERATION + 1))")
+#        }
+#    manifest.input = $$PWD/android/AndroidManifest.xml.in
+#    manifest.output = $$PWD/android/i386/AndroidManifest.xml
+#    QMAKE_SUBSTITUTES += manifest
+#}
+
+#contains(ANDROID_TARGET_ARCH, arm64-v8a) {
+#    win32 {
+#        ITERATION = $$system("set /a $$ITERATION + 2")
+#    } else:unix {
+#        ITERATION = $$system("echo $(($$ITERATION + 2))")
+#    }
+#    manifest.input = $$PWD/android/AndroidManifest.xml.in
+#    manifest.output = $$PWD/android/arm64/AndroidManifest.xml
+#    QMAKE_SUBSTITUTES += manifest
+#}
+
+#contains(ANDROID_TARGET_ARCH, armeabi-v7a) {
+#    manifest.input = $$PWD/android/AndroidManifest.xml.in
+#    manifest.output = $$PWD/android/arm32/AndroidManifest.xml
+#    QMAKE_SUBSTITUTES += manifest
+#}

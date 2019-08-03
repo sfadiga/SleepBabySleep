@@ -42,3 +42,10 @@ target_wrapper.*
 
 # QtCreator CMake
 CMakeLists.txt.user*
+
+#myprojectfiles
+*.wav
+*.mp3
+*.der
+/.playstore_art
+android_release.keystore
