@@ -1,5 +1,8 @@
 # The Baby Project - Baby Whisperer App (on playstore)
 
+The App is now available at the playstore ! 
+https://play.google.com/store/apps/details?id=br.sandrofadiga
+
 An app (desktop/mobile) made in QML for help parents put their babies to sleep.
 
 The app has an selection of sounds (still in progress) available to be played to help the baby relax.
